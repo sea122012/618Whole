@@ -1,0 +1,1461 @@
+<!-- ════════════════════════════════════════════════════════════
+     SpearX × PChome 618 折扣戰  ·  樣式檔
+     修改記錄：
+       20260514-v1 - 初版拆分，移除 Hero Banner，補強 RWD 手機版
+     ════════════════════════════════════════════════════════════ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset & 基礎 ── */
+.sx618, .sx618 *, .sx618 *::before, .sx618 *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+  font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+}
+
+/* ── 全寬突破 Cyberbiz 容器限制 ── */
+.sx618 {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  --blue:       #0055b8;
+  --blue-2:     #0066d6;
+  --blue-dark:  #003d85;
+  --blue-light: #e8f0fb;
+  --blue-mid:   #ccddf5;
+  --black:      #000000;
+  --gray-1:     #f5f6f8;
+  --gray-2:     #e8eaed;
+  --gray-3:     #9EA0A0;
+  --gray-4:     #666666;
+  --white:      #ffffff;
+  --gold:       #FFC300;
+  --gold-dark:  #c07800;
+  --orange:     #FF6B35;
+  --wave-3-c:   #d4880a;
+  --bg-main:    #09112f;
+  --bg-stats:   #F6F6F6;
+  --c-brand:    #05FFEA;
+  --vw-drop:    3.33vw;
+
+  background: var(--white);
+  color: var(--black);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════════════════
+   深色頂部背景（含 V 形切角）
+══════════════════════════════════════════════════════ */
+.sx618 .top-gradient-bg {
+  background: var(--bg-main);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - var(--vw-drop)), 0 100%);
+  margin-bottom: calc(-1 * var(--vw-drop));
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════════
+   倒數計時區塊
+══════════════════════════════════════════════════════ */
+.sx618 .hero-cd-block {
+  text-align: center;
+  padding: 40px 24px 60px;
+}
+.sx618 .cd-label-main {
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 12px;
+  min-height: 1.5em;
+  transition: color 0.4s;
+}
+.sx618 .cd-label-main.is-final { color: var(--orange); }
+
+.sx618 .countdown {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.sx618 .cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sx618 .cd-num {
+  font-size: clamp(56px, 13vw, 116px);
+  line-height: 1;
+  color: var(--gold);
+  min-width: clamp(60px, 13vw, 120px);
+  text-align: center;
+  letter-spacing: 0.02em;
+  transition: color 0.4s;
+}
+.sx618 .cd-num.is-final { color: var(--orange); }
+.sx618 .cd-label {
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+.sx618 .cd-sep {
+  font-size: clamp(42px, 10vw, 92px);
+  color: var(--gold);
+  line-height: 1;
+  padding: 0 2px;
+  align-self: flex-start;
+  margin-top: 6px;
+  transition: color 0.4s;
+}
+.sx618 .cd-sep.is-final { color: var(--orange); }
+.sx618 .cd-ended {
+  display: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.65);
+  padding: 32px 24px;
+  letter-spacing: 0.08em;
+}
+
+/* ══════════════════════════════════════════════════════
+   品牌列（深藍色 V 形）
+══════════════════════════════════════════════════════ */
+.sx618 .brand-section {
+  background: #0D1020;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - var(--vw-drop)), 0 100%);
+  margin-bottom: calc(-1 * var(--vw-drop));
+  position: relative;
+  z-index: 2;
+  padding-top: calc(24px + var(--vw-drop));
+  padding-bottom: calc(32px + var(--vw-drop));
+  text-align: center;
+}
+.sx618 .pchome-bar-title {
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 900;
+  color: var(--c-brand);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+/* 修正：原版 clamp(45px, 3.5vw, 22px) min > max 的 Bug */
+.sx618 .pchome-bar-sub {
+  font-size: clamp(16px, 3.5vw, 22px);
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-top: 4px;
+}
+
+/* ══════════════════════════════════════════════════════
+   統計數字列（淺灰底 V 形）
+══════════════════════════════════════════════════════ */
+.sx618 .stats-section {
+  background: var(--bg-stats);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--vw-drop)), 50% 100%, 0 calc(100% - var(--vw-drop)));
+  margin-bottom: calc(-1 * var(--vw-drop));
+  position: relative;
+  z-index: 1;
+  padding-top: calc(24px + var(--vw-drop));
+  padding-bottom: calc(32px + var(--vw-drop));
+}
+.sx618 .stats-row {
+  display: flex;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.sx618 .stat-box {
+  flex: 1;
+  max-width: 33.333%;
+  padding: 22px 0;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+.sx618 .stat-val,
+.sx618 .stat-label {
+  transition: transform 0.3s ease;
+}
+.sx618 .stat-box:hover .stat-val,
+.sx618 .stat-box:hover .stat-label {
+  transform: scale(1.08);
+}
+.sx618 .stat-box:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 1px; height: 60px;
+  background: rgba(0,0,0,0.2);
+}
+.sx618 .stat-val {
+  font-weight: 900;
+  line-height: 1;
+  color: #1E90FF;
+  letter-spacing: -0.05em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+.sx618 .stat-val .sym  { font-size: clamp(48px, 10vw, 100px); }
+.sx618 .stat-val .unit { font-size: clamp(28px, 5vw, 56px); margin: 0 2px; }
+.sx618 .stat-label {
+  font-size: clamp(14px, 3vw, 24px);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #000;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════
+   品牌列（PChome 官方獨家）→ 取代原數據列文字
+══════════════════════════════════════════════════════ */
+.sx618 .stats-row--brand {
+  justify-content: center;
+  align-items: center;
+}
+.sx618 .stat-box--brand {
+  max-width: 100%;
+  padding: 16px 0;
+  text-align: center;
+  cursor: default;
+}
+.sx618 .stat-box--brand:hover .brand-title,
+.sx618 .stat-box--brand:hover .brand-sub { transform: none; }
+.sx618 .brand-title {
+  font-size: clamp(36px, 7vw, 80px);
+  font-weight: 900;
+  color: #1E90FF;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+.sx618 .brand-sub {
+  font-size: clamp(16px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.15em;
+  margin-top: 6px;
+}
+
+/* ══════════════════════════════════════════════════════
+   活動時程（階梯式時間軸）
+══════════════════════════════════════════════════════ */
+.sx618 .waves-section {
+  background: transparent;
+  padding: calc(80px + var(--vw-drop)) 5% 30px;
+  position: relative;
+  z-index: 1;
+}
+.sx618 .tl-title {
+  text-align: center;
+  font-size: clamp(28px, 5.5vw, 52px);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.sx618 .tl-subtitle {
+  text-align: center;
+  font-size: clamp(13px, 2.8vw, 22px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: 72px;
+}
+.sx618 .tl-stagger-container {
+  position: relative;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  height: calc(var(--vw-drop) + clamp(72px, 12vw, 134px));
+}
+.sx618 .tl-stagger-col {
+  position: absolute;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  z-index: 2;
+}
+.sx618 .tl-date {
+  font-weight: 900;
+  font-size: clamp(18px, 4.5vw, 56px);
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+.sx618 .tl-line {
+  width: 1px;
+  height: clamp(40px, 8vw, 80px);
+  background: rgba(255,255,255,0.8);
+}
+.sx618 .tl-stagger-wave {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin-top: calc(12px + clamp(40px, 8vw, 82px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.sx618 .tl-wnum {
+  font-size: clamp(14px, 3.5vw, 32px);
+  font-weight: 900;
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+
+/* ══════════════════════════════════════════════════════
+   波次明細（淺灰底，垂直線 + 商品數）
+══════════════════════════════════════════════════════ */
+.sx618 .wave-details-section {
+  background: var(--bg-stats);
+  position: relative;
+  z-index: 0;
+  padding-top: calc(16px + var(--vw-drop));
+  padding-bottom: 24px;
+}
+.sx618 .tl-details-container {
+  position: relative;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  height: clamp(70px, 9vw, 110px);
+}
+.sx618 .tl-gray-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: #A0A0A0;
+  transform: translateX(-50%);
+}
+.sx618 .tl-details-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  text-align: center;
+  padding: 0 10px;
+}
+.sx618 .tl-details-text {
+  font-size: clamp(14px, 2.5vw, 24px);
+  font-weight: 900;
+  color: var(--black);
+}
+.sx618 .tl-new-badge {
+  display: inline-block;
+  font-size: clamp(11px, 1.8vw, 14px);
+  background: var(--gold);
+  color: #111;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════════════════════════════
+   活動介紹
+══════════════════════════════════════════════════════ */
+.sx618 .intro-section {
+  padding: 80px 5% 64px;
+  background: var(--white);
+}
+.sx618 .intro-title {
+  text-align: center;
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 900;
+  color: var(--black);
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+.sx618 .intro-list { max-width: 800px; margin: 0 auto; }
+.sx618 .intro-item {
+  font-size: clamp(13px, 1.8vw, 16px);
+  color: var(--gray-4);
+  line-height: 1.9;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray-2);
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+.sx618 .intro-item:first-child { border-top: 1px solid var(--gray-2); }
+.sx618 .intro-item:last-child  { border-bottom: none; }
+.sx618 .intro-item strong { color: var(--blue); font-weight: 700; }
+
+/* ══════════════════════════════════════════════════════
+   CTA 按鈕
+══════════════════════════════════════════════════════ */
+.sx618 .cta-section {
+  padding: 40px 24px 64px;
+  text-align: center;
+  background: var(--white);
+  border: none;
+}
+.sx618 .cta-title {
+  font-size: clamp(18px, 4vw, 28px);
+  font-weight: 900;
+  color: var(--black);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+.sx618 .cta-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(72px, 10vw, 96px);
+  height: clamp(40px, 5vw, 54px);
+  background: var(--blue);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.sx618 .cta-arrow-btn:hover { background: var(--blue-2); transform: translateY(2px); }
+.sx618 .cta-arrow-btn::before {
+  content: '';
+  display: block;
+  width: 14px; height: 14px;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: rotate(45deg) translate(-2px, -2px);
+}
+
+/* ══════════════════════════════════════════════════════
+   商品列表
+══════════════════════════════════════════════════════ */
+.sx618 .products-section { background: var(--gray-1); padding: 64px 5% 80px; }
+.sx618 .products-section .section-title {
+  color: var(--black); margin-bottom: 32px;
+  font-size: clamp(20px, 4vw, 36px); font-weight: 900; text-align: center;
+}
+
+.sx618 .filter-bar {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 16px;
+}
+.sx618 .fil-btn {
+  font-size: clamp(12px, 1.8vw, 15px); letter-spacing: 0.06em;
+  padding: 8px 16px; border-radius: 20px;
+  border: 1px solid var(--gray-2); background: var(--white);
+  color: var(--gray-4); cursor: pointer; transition: all 0.15s;
+}
+.sx618 .fil-btn:hover { border-color: var(--blue); color: var(--blue); }
+.sx618 .fil-btn.active { background: var(--black); border-color: var(--black); color: #fff; }
+
+.sx618 .sort-bar {
+  display: flex; align-items: center; gap: 8px;
+  justify-content: center; margin-bottom: 32px; flex-wrap: wrap;
+}
+.sx618 .sort-label {
+  font-size: clamp(11px, 1.8vw, 14px); color: var(--gray-3);
+  letter-spacing: 0.1em; margin-right: 4px;
+}
+.sx618 .sort-btn {
+  font-size: clamp(11px, 1.8vw, 14px); padding: 6px 14px;
+  border-radius: 20px; border: 1px solid var(--gray-2);
+  background: var(--white); color: var(--gray-4);
+  cursor: pointer; transition: all 0.15s;
+}
+.sx618 .sort-btn:hover { border-color: var(--blue); color: var(--blue); }
+.sx618 .sort-btn.active { background: var(--black); border-color: var(--black); color: var(--white); }
+
+.sx618 .prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1px; max-width: 1200px; margin: 0 auto;
+  background: var(--gray-2); border: 1px solid var(--gray-2);
+}
+.sx618 .prod-card {
+  background: var(--white); display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s; overflow: hidden;
+}
+.sx618 .prod-card:hover {
+  box-shadow: 0 4px 24px rgba(0,85,184,0.1); transform: translateY(-2px);
+  z-index: 1; position: relative; background: var(--blue-light);
+}
+.sx618 .prod-card.hidden { display: none; }
+.sx618 .prod-img-wrap {
+  aspect-ratio: 1 / 1; background: var(--gray-1);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.sx618 .prod-img-wrap img {
+  width: 75%; height: 75%; object-fit: contain; transition: transform 0.3s;
+}
+.sx618 .prod-card:hover .prod-img-wrap img { transform: scale(1.05); }
+.sx618 .prod-flag {
+  position: absolute; top: 12px; left: 0;
+  background: var(--blue); color: var(--white);
+  font-size: 15px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 3px 10px 3px 8px;
+  clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%);
+}
+.sx618 .prod-flag.coming {
+  background: var(--wave-3-c); clip-path: none;
+  border-radius: 0 2px 2px 0; color: #000;
+}
+.sx618 .prod-body {
+  padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px;
+}
+.sx618 .prod-name    { font-size: 22px; font-weight: 700; color: var(--black); }
+.sx618 .prod-subtitle { font-size: 14px; color: var(--gray-4); line-height: 1.3; }
+.sx618 .prod-prices  { display: flex; flex-direction: column; gap: 4px; }
+.sx618 .prod-orig    { font-size: 12px; color: var(--gray-3); text-decoration: line-through; }
+.sx618 .prod-disc    { font-size: 13px; font-weight: 500; color: var(--gray-4); }
+.sx618 .prod-save    { font-size: 14px; font-weight: 700; color: var(--gold-dark); }
+.sx618 .prod-final   { font-size: 38px; font-weight: 900; line-height: 1; color: var(--blue); }
+.sx618 .prod-final-currency { font-size: 26px; font-weight: 700; }
+.sx618 .prod-warranty {
+  font-size: 11px; color: var(--gray-3); letter-spacing: 0.04em;
+  padding-top: 10px; border-top: 1px solid var(--gray-2);
+}
+.sx618 .prod-btn {
+  display: block; background: transparent;
+  border: 1px solid var(--blue); color: var(--blue);
+  font-size: 14px; font-weight: 700; letter-spacing: 0.1em;
+  text-align: center; padding: 14px; text-decoration: none;
+  text-transform: uppercase; cursor: pointer; transition: all 0.15s;
+  border-radius: 1px; margin-top: auto;
+}
+.sx618 .prod-btn:hover { background: var(--blue); color: var(--white); }
+.sx618 .prod-card.coming-soon .prod-img-wrap { opacity: 0.55; }
+.sx618 .prod-card.coming-soon { order: 999; }
+.sx618 .prod-btn.coming { border-color: var(--wave-3-c); color: var(--wave-3-c); cursor: default; }
+.sx618 .prod-btn.coming:hover { background: rgba(212,136,10,0.06); color: var(--wave-3-c); }
+
+/* ══════════════════════════════════════════════════════
+   頁尾
+══════════════════════════════════════════════════════ */
+.sx618 .footer { background: var(--gray-1); padding: 40px 24px 32px; }
+.sx618 .footer-inner { max-width: 1200px; margin: 0 auto; }
+.sx618 .footer-bottom {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+  padding-top: 0; border-top: none;
+}
+.sx618 .footer-copy { font-size: 12px; color: var(--gray-4); letter-spacing: 0.06em; }
+.sx618 .footer-link {
+  font-size: 12px; color: var(--blue); text-decoration: none;
+  letter-spacing: 0.08em; border-bottom: 1px solid var(--blue-mid);
+  padding-bottom: 1px; transition: color 0.15s;
+}
+.sx618 .footer-link:hover { color: var(--blue-dark); }
+
+/* ══════════════════════════════════════════════════════
+   手機版垂直時間軸（預設隱藏，480px 以下才顯示）
+══════════════════════════════════════════════════════ */
+.sx618 .mobile-vtl-section { display: none; }
+
+/* ══════════════════════════════════════════════════════
+   RWD — 平板 (≤ 768px)
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .sx618 .prod-grid { grid-template-columns: repeat(2, 1fr); }
+  .sx618 .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .sx618 .waves-section { padding-top: calc(64px + var(--vw-drop)); }
+  .sx618 .fil-btn  { padding: 7px 13px; }
+  .sx618 .sort-btn { padding: 5px 11px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   RWD — 手機 (≤ 480px)
+══════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  /* ── 隱藏電腦版時間軸，顯示手機版垂直時間軸 ── */
+  .sx618 .waves-section,
+  .sx618 .wave-details-section { display: none !important; }
+
+  /* ── 手機版垂直時間軸：新版型 ── */
+  .sx618 .mobile-vtl-section {
+    display: block;
+    background: #09112f;
+    padding: 48px 0 48px;
+  }
+  .sx618 .mvtl-header {
+    padding: 0 10% 36px;
+  }
+  .sx618 .mobile-vtl-section .tl-title {
+    font-size: clamp(30px, 9vw, 46px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+  .sx618 .mobile-vtl-section .tl-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+  }
+
+  /* 整體容器：左右留白 */
+  .sx618 .mvtl-wrap {
+    width: 74%;
+    margin: 0 5% 0 21%;
+  }
+
+  /* 每個波次區塊 */
+  .sx618 .mvtl-item {
+    background: #09112f;
+  }
+  .sx618 .mvtl-item--end {
+    border: none;
+  }
+
+  /* 日期行：日期金色大字 + 橫線 */
+  .sx618 .mvtl-date-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0 0 0;
+    gap: 0;
+  }
+  .sx618 .mvtl-date {
+    font-size: clamp(26px, 8.5vw, 40px);
+    font-weight: 900;
+    color: #d4a843;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-right: 16px;
+  }
+  .sx618 .mvtl-hline {
+    flex: 1;
+    height: 1.5px;
+    background: rgba(255,255,255,0.25);
+    display: block;
+  }
+
+  /* 波次行：縮排，第X波金色 + badge 空心邊框 */
+  .sx618 .mvtl-wave-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0 24px 12%;
+  }
+  .sx618 .mvtl-wlabel {
+    font-size: clamp(20px, 6.5vw, 32px);
+    font-weight: 700;
+    color: #d4a843;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .sx618 .mvtl-badge {
+    display: inline-block;
+    background: transparent;
+    color: #d4a843;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border: 1.5px solid #d4a843;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  /* 倒數計時 */
+  .sx618 .hero-cd-block { padding: 28px 12px 48px; }
+  .sx618 .cd-num  { font-size: clamp(44px, 12vw, 72px); min-width: 48px; }
+  .sx618 .cd-sep  { font-size: clamp(32px, 9vw, 56px); }
+  .sx618 .cd-label { font-size: 16px; }
+
+  /* 品牌列（手機版）*/
+  .sx618 .brand-title { font-size: clamp(28px, 9.5vw, 52px); }
+  .sx618 .brand-sub   { font-size: clamp(13px, 4.5vw, 22px); letter-spacing: 0.1em; }
+  .sx618 .stat-box--brand { padding: 12px 0; }
+
+  /* 時間軸 */
+  .sx618 { --vw-drop: 12vw; } /* 手機增大階梯高度差，讓視覺接近電腦版 */
+  .sx618 .tl-stagger-container {
+    width: 94%;
+    height: calc(var(--vw-drop) + clamp(48px, 11vw, 80px));
+  }
+  .sx618 .tl-title  { font-size: clamp(22px, 7.5vw, 40px); }
+  .sx618 .tl-date   { font-size: clamp(13px, 4.2vw, 22px); margin-bottom: 6px; }
+  .sx618 .tl-wnum   { font-size: clamp(11px, 3.5vw, 18px); }
+  .sx618 .tl-line   { height: clamp(20px, 6vw, 40px); }
+  .sx618 .tl-stagger-col { width: 56px; }
+  .sx618 .tl-subtitle { margin-bottom: 40px; font-size: 11px; letter-spacing: 0.04em; }
+  .sx618 .waves-section { padding-left: 2%; padding-right: 2%; }
+
+  /* 波次明細 — 灰線對齊：左線=05.25(0%)、中線=06.08(50%)、右線=06.22(100%) */
+  .sx618 .tl-details-container {
+    width: 94%;
+    height: clamp(64px, 16vw, 96px);
+  }
+  .sx618 .tl-details-text { font-size: clamp(13px, 3.8vw, 20px); }
+
+  /* 活動介紹 */
+  .sx618 .intro-section { padding: 52px 5% 48px; }
+  .sx618 .intro-title { font-size: clamp(22px, 7.5vw, 40px); } /* 手機：佔3.5/6橫向 */
+  .sx618 .intro-item { font-size: 14px; line-height: 1.75; }
+
+  /* CTA */
+  .sx618 .cta-section { padding: 32px 16px 56px; }
+  .sx618 .cta-title { font-size: clamp(22px, 7.5vw, 40px); } /* 手機：佔3.5/6橫向 */
+
+  /* 商品列表 */
+  .sx618 .products-section { padding: 48px 3% 64px; }
+  .sx618 .prod-grid { grid-template-columns: 1fr; }
+  .sx618 .prod-name  { font-size: 20px; }
+  .sx618 .prod-final { font-size: 34px; }
+  .sx618 .prod-save  { font-size: 13px; }
+
+  /* 頁尾 */
+  .sx618 .footer { padding: 32px 16px 28px; }
+  .sx618 .footer-bottom { flex-direction: column; align-items: center; gap: 8px; border-top: none; padding-top: 0; }
+  .sx618 .footer-link { order: 1; } /* 官網btn在上 */
+  .sx618 .footer-copy { order: 2; font-size: 11px; } /* 版權在下 */
+  .sx618 .footer-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--blue); color: #fff !important;
+    border: none; border-radius: 4px;
+    padding: 14px 32px; font-size: 16px; font-weight: 700;
+    letter-spacing: 0.08em; text-decoration: none;
+    border-bottom: none !important;
+    width: 80%; max-width: 300px;
+  }
+  .sx618 .footer-link:hover { background: var(--blue-2); color: #fff !important; }
+}
+
+/* ── 隱藏 Cyberbiz Header / Footer / GetButton ── */
+#navbar, #header, .drawer,
+body > footer, .site-footer,
+[class*="footer_section"], [id*="footer"],
+#getbutton-widget, .getbutton-widget, [id^="getbutton"] {
+  display: none !important;
+}
+body { padding-top: 0 !important; }
+
+/* ── 淡入動畫 ── */
+@keyframes sx618FadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sx618 .hero-cd-block > * { animation: sx618FadeUp 0.6s ease both; }
+.sx618 .cd-label-main      { animation-delay: 0.08s; }
+.sx618 .countdown          { animation-delay: 0.18s; }
+</style>
+
+<!-- ════════════════════════════════════════════════════════════
+     SpearX × PChome 618 折扣戰  ·  HTML 內容檔
+     修改記錄：
+       20260514-v1 - 初版拆分
+     修改說明：
+       · 商品價格 / 連結      → 在本檔案的 PRODUCTS 區塊修改
+       · 活動介紹文字         → 在本檔案的 ACTIVITY INTRO 區塊修改
+       · 時間軸日期 / 商品數  → 搜尋 tl-date / tl-details-text
+     ════════════════════════════════════════════════════════════ -->
+
+<div class="sx618">
+
+<!-- ════ 深色頂部背景（倒數 + 品牌列 + 統計列 + 時間軸）════ -->
+<div class="top-gradient-bg">
+
+  <!-- ── 倒數計時 ── -->
+  <div class="hero-cd-block">
+    <div class="cd-label-main" id="sx-cd-label">距 第一波 開跑</div>
+    <div class="countdown" id="sx-countdown">
+      <div class="cd-unit">
+        <div class="cd-num" id="sx-cd-d">--</div>
+        <div class="cd-label">天</div>
+      </div>
+      <div class="cd-sep" id="sx-sep1">:</div>
+      <div class="cd-unit">
+        <div class="cd-num" id="sx-cd-h">--</div>
+        <div class="cd-label">時</div>
+      </div>
+      <div class="cd-sep" id="sx-sep2">:</div>
+      <div class="cd-unit">
+        <div class="cd-num" id="sx-cd-m">--</div>
+        <div class="cd-label">分</div>
+      </div>
+      <div class="cd-sep" id="sx-sep3">:</div>
+      <div class="cd-unit">
+        <div class="cd-num" id="sx-cd-s">--</div>
+        <div class="cd-label">秒</div>
+      </div>
+    </div>
+    <div class="cd-ended" id="sx-ended">感謝您的參與！活動已圓滿結束</div>
+  </div>
+
+  <!-- ── 品牌列已整合至下方 stats-section ── -->
+
+  <!-- ── 品牌列（PChome 官方獨家）── -->
+  <section class="stats-section">
+    <div class="stats-row stats-row--brand">
+      <div class="stat-box stat-box--brand">
+        <div class="brand-title">PChome</div>
+        <div class="brand-sub">官方獨家優惠</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 活動時程（階梯式時間軸）── -->
+  <section class="waves-section">
+    <div class="tl-title">總活動時程</div>
+    <div class="tl-subtitle">2026.05.25 11:00 &ndash; 2026.06.22 10:59</div>
+
+    <div class="tl-stagger-container">
+      <!-- 05.25（最低點） -->
+      <div class="tl-stagger-col" style="left:0%;top:var(--vw-drop)">
+        <div class="tl-date">05.25</div>
+        <div class="tl-line"></div>
+      </div>
+      <!-- 第1波 -->
+      <div class="tl-stagger-wave" style="left:12.5%;top:calc(var(--vw-drop)*.75)">
+        <div class="tl-wnum">1波</div>
+      </div>
+      <!-- 06.01 -->
+      <div class="tl-stagger-col" style="left:25%;top:calc(var(--vw-drop)*.5)">
+        <div class="tl-date">06.01</div>
+        <div class="tl-line"></div>
+      </div>
+      <!-- 第2波 -->
+      <div class="tl-stagger-wave" style="left:37.5%;top:calc(var(--vw-drop)*.25)">
+        <div class="tl-wnum">2波</div>
+      </div>
+      <!-- 06.08（最高點） -->
+      <div class="tl-stagger-col" style="left:50%;top:0">
+        <div class="tl-date">06.08</div>
+        <div class="tl-line"></div>
+      </div>
+      <!-- 第3波 -->
+      <div class="tl-stagger-wave" style="left:62.5%;top:calc(var(--vw-drop)*.25)">
+        <div class="tl-wnum">3波</div>
+      </div>
+      <!-- 06.15 -->
+      <div class="tl-stagger-col" style="left:75%;top:calc(var(--vw-drop)*.5)">
+        <div class="tl-date">06.15</div>
+        <div class="tl-line"></div>
+      </div>
+      <!-- 第4波 -->
+      <div class="tl-stagger-wave" style="left:87.5%;top:calc(var(--vw-drop)*.75)">
+        <div class="tl-wnum">4波</div>
+      </div>
+      <!-- 06.22（最低點） -->
+      <div class="tl-stagger-col" style="left:100%;top:var(--vw-drop)">
+        <div class="tl-date">06.22</div>
+        <div class="tl-line"></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end .top-gradient-bg -->
+
+<!-- ════ 波次明細（淺灰底）════ -->
+<section class="wave-details-section">
+  <div class="tl-details-container">
+    <div class="tl-gray-line" style="left:0%"></div>
+    <div class="tl-gray-line" style="left:50%;top:calc(-1 * var(--vw-drop))"></div>
+    <div class="tl-gray-line" style="left:100%"></div>
+    <div class="tl-details-content" style="left:0%">
+      <div class="tl-details-text">9款商品參與</div>
+    </div>
+    <div class="tl-details-content" style="left:50%">
+      <div class="tl-details-text">12款商品參與<br><span class="tl-new-badge">新增3款</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 手機版垂直時間軸（僅手機顯示）════ -->
+<section class="mobile-vtl-section">
+  <div class="mvtl-header">
+    <div class="tl-title">總活動時程</div>
+    <div class="tl-subtitle">2026.05.25 11:00 &ndash; 2026.06.22 10:59</div>
+  </div>
+  <div class="mvtl-wrap">
+
+    <!-- 第1波 -->
+    <div class="mvtl-item">
+      <div class="mvtl-date-row">
+        <span class="mvtl-date">05.25</span>
+        <span class="mvtl-hline"></span>
+      </div>
+      <div class="mvtl-wave-row">
+        <span class="mvtl-wlabel">第 1 波</span>
+        <span class="mvtl-badge">9款商品</span>
+      </div>
+    </div>
+
+    <!-- 第2波 -->
+    <div class="mvtl-item">
+      <div class="mvtl-date-row">
+        <span class="mvtl-date">06.01</span>
+        <span class="mvtl-hline"></span>
+      </div>
+      <div class="mvtl-wave-row">
+        <span class="mvtl-wlabel">第 2 波</span>
+        <span class="mvtl-badge">9款商品</span>
+      </div>
+    </div>
+
+    <!-- 第3波 -->
+    <div class="mvtl-item">
+      <div class="mvtl-date-row">
+        <span class="mvtl-date">06.08</span>
+        <span class="mvtl-hline"></span>
+      </div>
+      <div class="mvtl-wave-row">
+        <span class="mvtl-wlabel">第 3 波</span>
+        <span class="mvtl-badge">12款商品</span>
+      </div>
+    </div>
+
+    <!-- 第4波 -->
+    <div class="mvtl-item">
+      <div class="mvtl-date-row">
+        <span class="mvtl-date">06.15</span>
+        <span class="mvtl-hline"></span>
+      </div>
+      <div class="mvtl-wave-row">
+        <span class="mvtl-wlabel">第 4 波</span>
+        <span class="mvtl-badge">12款商品</span>
+      </div>
+    </div>
+
+    <!-- 終點 -->
+    <div class="mvtl-item mvtl-item--end">
+      <div class="mvtl-date-row">
+        <span class="mvtl-date">06.22</span>
+        <span class="mvtl-hline"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ 活動介紹 ════ -->
+<section class="intro-section">
+  <div class="intro-title">活動介紹</div>
+  <div class="intro-list">
+    <div class="intro-item">
+      活動分 4 波進行，第 1 波 05/25 起、第 2 波 06/01 起、第 3 波 06/08 起、第 4 波 06/15 起
+    </div>
+    <div class="intro-item">
+      自第 3 波起 <strong>S1、D1-Pure、X1-Boost</strong> 這 3 款商品加入活動
+    </div>
+    <div class="intro-item">
+      活動售價以 PChome 平台實際顯示為準，本頁資訊僅供參考
+    </div>
+    <div class="intro-item">
+      本活動由 PChome 平台執行，購買及售後事宜請洽 PChome 客服
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA 按鈕（點擊後展開商品）════ -->
+<section class="cta-section" id="sx-cta">
+  <div class="cta-title">立即選購</div>
+  <button class="cta-arrow-btn" onclick="sxShowProducts()"></button>
+</section>
+
+<!-- ════ PRODUCTS ════ -->
+<section class="products-section" id="sx-products" style="display:none">
+  <div class="section-title">立即選購</div>
+
+  <!-- 篩選列 -->
+  <div class="filter-bar">
+    <button class="fil-btn active" onclick="sxFilter('all',this)">全部</button>
+    <button class="fil-btn" onclick="sxFilter('discount',this)">折扣有感</button>
+    <button class="fil-btn" onclick="sxFilter('earcover',this)">耳罩式</button>
+    <button class="fil-btn" onclick="sxFilter('iem',this)">入耳式</button>
+    <button class="fil-btn" onclick="sxFilter('gaming',this)">電競</button>
+    <button class="fil-btn" onclick="sxFilter('music',this)">音樂</button>
+    <button class="fil-btn" onclick="sxFilter('sport',this)">運動</button>
+    <button class="fil-btn" onclick="sxFilter('wireless',this)">無線</button>
+    <button class="fil-btn" onclick="sxFilter('wired',this)">有線</button>
+  </div>
+
+  <!-- 排序列 -->
+  <div class="sort-bar">
+    <span class="sort-label">排序：</span>
+    <button class="sort-btn active" onclick="sxSort('default',this)">預設</button>
+    <button class="sort-btn" onclick="sxSort('price-asc',this)">價格低→高</button>
+    <button class="sort-btn" onclick="sxSort('price-desc',this)">價格高→低</button>
+    <button class="sort-btn" onclick="sxSort('discount-desc',this)">折扣多→少</button>
+  </div>
+
+  <!-- 商品 Grid ── 修改商品請在此區塊內新增/移除 .prod-card -->
+  <div class="prod-grid" id="sx-prod-grid">
+
+    <!-- ── D1 ── -->
+    <div class="prod-card" data-price="639" data-discount="80" data-coming="0"
+         data-tags="discount,earcover,music,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMjE1NzkyL1NwZWFyWC05LTAwODdfOTFmOGJmYzU3NzM2NjVjYTNkYTYuanBlZyJdLFsicCIsInRodW1iIiwiMjQweDI0MCJdXQ.jpeg?sha=78ec2924de2311d3" alt="D1">
+        <div class="prod-flag">折 80%</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">D1</div>
+          <div class="prod-subtitle">高音質耳罩式有線音樂耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$3,280</div>
+          <div class="prod-disc">官網折扣價 NT$799</div>
+          <div class="prod-save">活動折扣價，省下 NT$2,641</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 639</div>
+        </div>
+        <div class="prod-warranty">保固：3 個月</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAY5Q-A900EQ33V" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── D1-Pure（第3波 6/8 加入）── -->
+    <div class="prod-card coming-soon" data-price="719" data-discount="75" data-coming="1"
+         data-tags="discount,earcover,music,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMzg3MzU5MjYvMTY2OTYxNzQwM18yNDM3ODAxYWRhODRhMDNiYmZhOC5qcGVnIl0sWyJwIiwidGh1bWIiLCIyNDB4MjQwIl1d.jpeg?sha=62c4d6e2285268a4" alt="D1-Pure">
+        <div class="prod-flag coming">6/8 折扣開跑</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">D1-Pure</div>
+          <div class="prod-subtitle">經典音樂耳罩式耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$2,880</div>
+          <div class="prod-disc">官網折扣價 NT$899</div>
+          <div class="prod-save">活動折扣價，省下 NT$2,161</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 719</div>
+        </div>
+        <div class="prod-warranty">保固：6 個月</div>
+        <a class="prod-btn coming" href="https://24h.pchome.com.tw/prod/DYAQA1-A900IKKBQ" target="_blank">🔔 6/8 折扣開跑</a>
+      </div>
+    </div>
+
+    <!-- ── D2-Air ── -->
+    <div class="prod-card" data-price="512" data-discount="60" data-coming="0"
+         data-tags="music,iem,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMjE2MDM5LzFfNzE1NWRmOGRhZjgwMTRiNjE0ODYuanBlZyJdLFsicCIsInRodW1iIiwiMjQweDI0MCJdXQ.jpeg?sha=6fdae706f8df7133" alt="D2-Air">
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">D2-Air</div>
+          <div class="prod-subtitle">風華時尚高音質入耳式音樂耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$1,280</div>
+          <div class="prod-disc">官網折扣價 NT$640</div>
+          <div class="prod-save">活動折扣價，省下 NT$768</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 512</div>
+        </div>
+        <div class="prod-warranty">保固：12 個月</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAY5Q-A9005ECQX" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── D2-BT ── -->
+    <div class="prod-card" data-price="639" data-discount="62" data-coming="0"
+         data-tags="iem,wireless">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMzQzODU0NjEvMTYzMTAwNTU0N182NzljNjAwYjI3MzU4ZWE1NjM5Ni5qcGVnIl0sWyJwIiwidGh1bWIiLCIyNDB4MjQwIl1d.jpeg?sha=2b25f5163bab7c90" alt="D2-BT">
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">D2-BT</div>
+          <div class="prod-subtitle">高音質藍牙入耳式耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$1,680</div>
+          <div class="prod-disc">官網折扣價 NT$799</div>
+          <div class="prod-save">活動折扣價，省下 NT$1,041</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 639</div>
+        </div>
+        <div class="prod-warranty">保固：3 個月</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAY5Q-A900GMC0O" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── D5-BT ── -->
+    <div class="prod-card" data-price="1199" data-discount="76" data-coming="0"
+         data-tags="discount,earcover,music,wireless">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMzk0MzEzNjYvMTY3NTc2MTcxM182MzQyODI3NWNlYzZkOTdjNTQzYS5qcGVnIl0sWyJwIiwidGh1bWIiLCIyNDB4MjQwIl1d.jpeg?sha=32ac00d240783f12" alt="D5-BT">
+        <div class="prod-flag">折 76%</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">D5-BT</div>
+          <div class="prod-subtitle">藍牙抗噪耳罩式耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$4,980</div>
+          <div class="prod-disc">官網折扣價 NT$1,499</div>
+          <div class="prod-save">活動折扣價，省下 NT$3,781</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 1,199</div>
+        </div>
+        <div class="prod-warranty">保固：6 個月</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DYAQ9D-A900FZSVY" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── GF-001 ── -->
+    <div class="prod-card" data-price="392" data-discount="64" data-coming="0"
+         data-tags="iem,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMjE5NTM5L0dGLTAwMS0wMDFfNzQ5LmpwZWciXSxbInAiLCJ0aHVtYiIsIjI0MHgyNDAiXV0.jpeg?sha=c5ddf21d800ea056" alt="GF-001">
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">GF-001</div>
+          <div class="prod-subtitle">繽紛入耳式耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$1,080</div>
+          <div class="prod-disc">官網折扣價 NT$490</div>
+          <div class="prod-save">活動折扣價，省下 NT$688</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 392</div>
+        </div>
+        <div class="prod-warranty">保固：12 個月</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAY5Q-A900A3QBG" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── S1 ── -->
+    <div class="prod-card" data-price="319" data-discount="78" data-coming="0"
+         data-tags="discount,sport,iem,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMjExMDQ1L1MxLeato-aWueWcli0wMV82MzguanBlZyJdLFsicCIsInRodW1iIiwiMjQweDI0MCJdXQ.jpeg?sha=076ab496d17c727c" alt="S1">
+        <div class="prod-flag">折 78%</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">S1</div>
+          <div class="prod-subtitle">運動專屬防水耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$1,480</div>
+          <div class="prod-disc">官網折扣價 NT$399</div>
+          <div class="prod-save">活動折扣價，省下 NT$1,161</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 319</div>
+        </div>
+        <div class="prod-warranty">保固：3 個月</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAY5Q-A900C43L8" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── S2（第3波 6/8 加入）── -->
+    <div class="prod-card coming-soon" data-price="661" data-discount="44" data-coming="1"
+         data-tags="sport,iem,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvNDk3MzEyLzE2MTc4ODAxNzJfOTE0Yzg4ZGE3NTMzZjIxZmE0NWUuanBlZyJdLFsicCIsInRodW1iIiwiMjQweDI0MCJdXQ.jpeg?sha=f75355181e6b46e3" alt="S2">
+        <div class="prod-flag coming">6/8 折扣開跑</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">S2</div>
+          <div class="prod-subtitle">高音質運動防水耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$1,180</div>
+          <div class="prod-disc">官網折扣價 NT$826</div>
+          <div class="prod-save">活動折扣價，省下 NT$519</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 661</div>
+        </div>
+        <div class="prod-warranty">保固：12 個月</div>
+        <a class="prod-btn coming" href="https://24h.pchome.com.tw/prod/DCAY5Q-A9009RJ4G" target="_blank">🔔 6/8 折扣開跑</a>
+      </div>
+    </div>
+
+    <!-- ── T+S O1 ── -->
+    <div class="prod-card" data-price="399" data-discount="81" data-coming="0"
+         data-tags="discount,iem,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMjEzOTExLzE3NzY0MDU1NTVfNDY4ZjRlMDhlZGY0YTc3M2EzYjYuanBlZyJdLFsicCIsInRodW1iIiwiMjQweDI0MCJdXQ.jpeg?sha=6f263bf39fab6bc9" alt="T+S O1">
+        <div class="prod-flag">折 81%</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">T+S O1</div>
+          <div class="prod-subtitle">全音域入耳式音樂耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$2,080</div>
+          <div class="prod-disc">官網折扣價 NT$499</div>
+          <div class="prod-save">活動折扣價，省下 NT$1,681</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 399</div>
+        </div>
+        <div class="prod-warranty">保固：無</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAY5Q-A900GM2TM" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── T+S O3 ── -->
+    <div class="prod-card" data-price="319" data-discount="84" data-coming="0"
+         data-tags="discount,iem,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMjE2MDQ1LzEtMV82OGVmNjcwYjdmZTEwMTM2NmUxYy5qcGVnIl0sWyJwIiwidGh1bWIiLCIyNDB4MjQwIl1d.jpeg?sha=2ddb6bed038e74db" alt="T+S O3">
+        <div class="prod-flag">折 84%</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">T+S O3</div>
+          <div class="prod-subtitle">全音域入耳式音樂耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$1,980</div>
+          <div class="prod-disc">官網折扣價 NT$399</div>
+          <div class="prod-save">活動折扣價，省下 NT$1,661</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 319</div>
+        </div>
+        <div class="prod-warranty">保固：無</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAY5Q-A900GM2G1" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+    <!-- ── X1-Boost（第3波 6/8 加入）── -->
+    <div class="prod-card coming-soon" data-price="799" data-discount="74" data-coming="1"
+         data-tags="discount,earcover,gaming,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvMzg3MzY5MjcvMTY2OTYxNzM2NF9lMWRiOTFiNTU2MDZhOWU5ZGE3NC5qcGVnIl0sWyJwIiwidGh1bWIiLCIyNDB4MjQwIl1d.jpeg?sha=2fff5ac2de1aa4bb" alt="X1-Boost">
+        <div class="prod-flag coming">6/8 折扣開跑</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">X1-Boost</div>
+          <div class="prod-subtitle">電競耳罩式耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$3,080</div>
+          <div class="prod-disc">官網折扣價 NT$999</div>
+          <div class="prod-save">活動折扣價，省下 NT$2,281</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 799</div>
+        </div>
+        <div class="prod-warranty">保固：6 個月</div>
+        <a class="prod-btn coming" href="https://24h.pchome.com.tw/prod/DYAQA1-A900IKKAN" target="_blank">🔔 6/8 折扣開跑</a>
+      </div>
+    </div>
+
+    <!-- ── X2 ── -->
+    <div class="prod-card" data-price="799" data-discount="73" data-coming="0"
+         data-tags="discount,earcover,gaming,wired">
+      <div class="prod-img-wrap">
+        <img src="https://spearx.cyberbiz.co/media/W1siZiIsIjY3MjEvcHJvZHVjdHMvNDU4MTY1LzE2MTc4ODAxMzJfOWJkZmI1ZmE5Zjk3NjFjNGQ2MGYuanBlZyJdLFsicCIsInRodW1iIiwiMjQweDI0MCJdXQ.jpeg?sha=8d82fccd85125be2" alt="X2">
+        <div class="prod-flag">折 73%</div>
+      </div>
+      <div class="prod-body">
+        <div>
+          <div class="prod-name">X2</div>
+          <div class="prod-subtitle">跨界耳罩式耳機</div>
+        </div>
+        <div class="prod-prices">
+          <div class="prod-orig">原價 NT$2,980</div>
+          <div class="prod-disc">官網折扣價 NT$999</div>
+          <div class="prod-save">活動折扣價，省下 NT$2,181</div>
+          <div class="prod-final"><span class="prod-final-currency">NT$</span> 799</div>
+        </div>
+        <div class="prod-warranty">保固：3 個月</div>
+        <a class="prod-btn" href="https://24h.pchome.com.tw/prod/DCAYPG-A900GYA3X" target="_blank">前往 PChome 購買</a>
+      </div>
+    </div>
+
+  </div><!-- end .prod-grid -->
+</section>
+
+<!-- ════ 頁尾 ════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 SpearX Inc. All rights reserved.</div>
+      <a class="footer-link" href="https://www.spearx-inc.com/" target="_blank">前往 SpearX 官網 →</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- end .sx618 -->
+
+<!-- ════════════════════════════════════════════════════════════
+     SpearX × PChome 618 折扣戰  ·  JavaScript 檔
+     修改說明：
+       · 活動波次日期  → 修改 WAVES 陣列內的 start 時間
+       · 活動結束時間  → 修改 EVENT_END
+       · Wave 3 解鎖時間（來不及商品）→ WAVES[2].start 自動同步
+     ════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+
+  /* ── 活動波次設定 ── */
+  var WAVES = [
+    { start: new Date('2026-05-25T11:00:00+08:00'), name: '第一波' },
+    { start: new Date('2026-06-01T11:00:00+08:00'), name: '第二波' },
+    { start: new Date('2026-06-08T11:00:00+08:00'), name: '第三波' },
+    { start: new Date('2026-06-15T11:00:00+08:00'), name: '第四波' }
+  ];
+  var EVENT_END   = new Date('2026-06-22T10:59:00+08:00');
+  var WAVE3_START = WAVES[2].start; /* coming-soon 商品解鎖時間 */
+
+  /* ── 判斷目前處於哪個階段 ── */
+  function getPhase(now) {
+    if (now < WAVES[0].start) {
+      return {
+        state: 'before',
+        label: '距 第一波 開跑',
+        countdownTo: WAVES[0].start,
+        isFinal: false
+      };
+    }
+    if (now >= EVENT_END) {
+      return { state: 'ended' };
+    }
+    for (var i = 0; i < WAVES.length; i++) {
+      var wEnd = (i < WAVES.length - 1) ? WAVES[i + 1].start : EVENT_END;
+      if (now >= WAVES[i].start && now < wEnd) {
+        var isFinal = (i === WAVES.length - 1);
+        return {
+          state: 'running',
+          isFinal: isFinal,
+          countdownTo: isFinal ? EVENT_END : WAVES[i + 1].start,
+          label: isFinal
+            ? '🔥 最後一波！活動截止倒數'
+            : ('第' + (i + 1) + '波進行中 · 距 第' + (i + 2) + '波 開跑')
+        };
+      }
+    }
+    return { state: 'ended' };
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  /* ── 更新倒數顯示（每秒呼叫）── */
+  function updateCountdown() {
+    var now   = new Date();
+    var phase = getPhase(now);
+    var label  = document.getElementById('sx-cd-label');
+    var cdWrap = document.getElementById('sx-countdown');
+    var ended  = document.getElementById('sx-ended');
+
+    if (phase.state === 'ended') {
+      if (cdWrap) cdWrap.style.display = 'none';
+      if (label)  label.style.display  = 'none';
+      if (ended)  ended.style.display  = 'block';
+      return;
+    }
+
+    if (label) {
+      label.textContent = phase.label;
+      label.classList.toggle('is-final', phase.isFinal);
+    }
+    document.querySelectorAll('.sx618 .cd-num, .sx618 .cd-sep').forEach(function (el) {
+      el.classList.toggle('is-final', phase.isFinal);
+    });
+
+    var diff = Math.max(0, phase.countdownTo - now);
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000)  / 60000);
+    var s = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('sx-cd-d').textContent = d;
+    document.getElementById('sx-cd-h').textContent = pad(h);
+    document.getElementById('sx-cd-m').textContent = pad(m);
+    document.getElementById('sx-cd-s').textContent = pad(s);
+  }
+
+  /* ── 第3波商品解鎖（6/8 11:00 自動切換）── */
+  function checkWave3() {
+    var isOpen = new Date() >= WAVE3_START;
+    document.querySelectorAll('.sx618 .prod-card[data-coming="1"]').forEach(function (card) {
+      var flag    = card.querySelector('.prod-flag');
+      var btn     = card.querySelector('.prod-btn');
+      var imgWrap = card.querySelector('.prod-img-wrap');
+      var disc    = card.dataset.discount;
+      if (isOpen) {
+        card.classList.remove('coming-soon');
+        card.style.order    = '';
+        card.dataset.coming = '0';
+        if (flag)    { flag.classList.remove('coming'); flag.textContent = '折 ' + disc + '%'; }
+        if (imgWrap) imgWrap.style.opacity = '1';
+        if (btn)     { btn.classList.remove('coming'); btn.textContent = '前往 PChome 購買'; }
+      } else {
+        card.classList.add('coming-soon');
+        card.style.order = '999';
+        if (flag)    { flag.classList.add('coming'); flag.textContent = '6/8 折扣開跑'; }
+        if (imgWrap) imgWrap.style.opacity = '0.55';
+        if (btn)     { btn.classList.add('coming'); btn.textContent = '🔔 6/8 折扣開跑'; }
+      }
+    });
+  }
+
+  /* ── CTA 按鈕：展開商品區 ── */
+  window.sxShowProducts = function () {
+    var section = document.getElementById('sx-products');
+    var cta     = document.getElementById('sx-cta');
+    if (section) {
+      section.style.display = 'block';
+      setTimeout(function () {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+    if (cta) cta.style.display = 'none';
+  };
+
+  /* ── 篩選 ── */
+  window.sxFilter = function (tag, el) {
+    document.querySelectorAll('.sx618 .fil-btn').forEach(function (b) { b.classList.remove('active'); });
+    el.classList.add('active');
+    document.querySelectorAll('.sx618 .prod-card').forEach(function (card) {
+      if (tag === 'all') { card.classList.remove('hidden'); return; }
+      card.classList.toggle('hidden', card.dataset.tags.split(',').indexOf(tag) === -1);
+    });
+  };
+
+  /* ── 排序 ── */
+  window.sxSort = function (rule, el) {
+    document.querySelectorAll('.sx618 .sort-btn').forEach(function (b) { b.classList.remove('active'); });
+    el.classList.add('active');
+    var grid  = document.getElementById('sx-prod-grid');
+    var cards = Array.from(grid.querySelectorAll('.prod-card'));
+    cards.sort(function (a, b) {
+      /* coming-soon 商品永遠排最後 */
+      var aC = +a.dataset.coming, bC = +b.dataset.coming;
+      if (aC !== bC) return aC - bC;
+      if (rule === 'default') return 0;
+      var aP = +a.dataset.price,    bP = +b.dataset.price;
+      var aD = +a.dataset.discount, bD = +b.dataset.discount;
+      if (rule === 'price-asc')     return aP - bP;
+      if (rule === 'price-desc')    return bP - aP;
+      if (rule === 'discount-desc') return bD - aD;
+      return 0;
+    });
+    cards.forEach(function (card) { grid.appendChild(card); });
+  };
+
+  /* ── 啟動 ── */
+  updateCountdown();
+  checkWave3();
+  setInterval(updateCountdown, 1000);
+  setInterval(checkWave3, 60000);
+
+  /* ── 手機版垂直時間軸：波次按鈕 toggle ── */
+  window.mvtlToggle = function(btn) {
+    var wave = btn.getAttribute('data-wave');
+    var detail = document.getElementById('mvtl-detail-' + wave);
+    var isOpen = btn.classList.contains('active');
+
+    // 關閉所有已開啟的
+    document.querySelectorAll('.mvtl-btn.active').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    document.querySelectorAll('.mvtl-detail.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+
+    // 若原本是關閉的，才打開
+    if (!isOpen && detail) {
+      btn.classList.add('active');
+      detail.classList.add('open');
+    }
+  };
+
+})();
+</script>
