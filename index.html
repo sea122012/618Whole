@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpearX × PChome 618 折扣戰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sx618">
+    <!-- ════ 深色頂部背景（倒數 + 品牌列 + 統計列 + 時間軸）════ -->
+    <div class="top-gradient-bg">
+        <!-- ── 倒數計時 ── -->
+        <div class="hero-cd-block">
+            <div class="cd-label-main" id="sx-cd-label">距 第一波 開跑</div>
+            <div class="countdown" id="sx-countdown">
+                <div class="cd-unit">
+                    <div class="cd-num" id="sx-cd-d">--</div>
+                    <div class="cd-label">天</div>
+                </div>
+                <div class="cd-sep" id="sx-sep1">:</div>
+                <div class="cd-unit">
+                    <div class="cd-num" id="sx-cd-h">--</div>
+                    <div class="cd-label">時</div>
+                </div>
+                <div class="cd-sep" id="sx-sep2">:</div>
+                <div class="cd-unit">
+                    <div class="cd-num" id="sx-cd-m">--</div>
+                    <div class="cd-label">分</div>
+                </div>
+                <div class="cd-sep" id="sx-sep3">:</div>
+                <div class="cd-unit">
+                    <div class="cd-num" id="sx-cd-s">--</div>
+                    <div class="cd-label">秒</div>
+                </div>
+            </div>
+            <div class="cd-ended" id="sx-ended">感謝您的參與！活動已圓滿結束</div>
+        </div>
+
+        <!-- ── 品牌列 ── -->
+        <section class="stats-section">
+            <div class="stats-row stats-row--brand">
+                <div class="stat-box stat-box--brand">
+                    <div class="brand-title">PChome</div>
+                    <div class="brand-sub">官方獨家優惠</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 活動時程（電腦版階梯式時間軸）── -->
+        <section class="waves-section">
+            <div class="tl-title">總活動時程</div>
+            <div class="tl-subtitle">2026.05.25 11:00 &ndash; 2026.06.22 10:59</div>
+            <div class="tl-stagger-container">
+                <!-- 05.25 -->
+                <div class="tl-stagger-col" style="left:0%;top:var(--vw-drop)">
+                    <div class="tl-date">05.25</div>
+                    <div class="tl-line"></div>
+                </div>
+                <!-- 第1波 -->
+                <div class="tl-stagger-wave" style="left:12.5%;top:calc(var(--vw-drop)*.75)">
+                    <div class="tl-wnum">1波</div>
+                </div>
+                <!-- 06.01 -->
+                <div class="tl-stagger-col" style="left:25%;top:calc(var(--vw-drop)*.5)">
+                    <div class="tl-date">06.01</div>
+                    <div class="tl-line"></div>
+                </div>
+                <!-- 中間略... 請參考原本結構 -->
+                <div class="tl-stagger-col" style="left:100%;top:var(--vw-drop)">
+                    <div class="tl-date">06.22</div>
+                    <div class="tl-line"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ════ 波次明細（淺灰底）════ -->
+    <section class="wave-details-section">
+        <div class="tl-details-container">
+            <div class="tl-gray-line" style="left:0%"></div>
+            <div class="tl-gray-line" style="left:50%;top:calc(-1 * var(--vw-drop))"></div>
+            <div class="tl-gray-line" style="left:100%"></div>
+            <div class="tl-details-content" style="left:0%">
+                <div class="tl-details-text">9款商品參與</div>
+            </div>
+            <div class="tl-details-content" style="left:50%">
+                <div class="tl-details-text">12款商品參與<br><span class="tl-new-badge">新增3款</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════ 活動介紹 ════ -->
+    <section class="intro-section">
+        <div class="intro-title">活動介紹</div>
+        <div class="intro-list">
+            <div class="intro-item">活動分 4 波進行，第 1 波 05/25 起</div>
+            <div class="intro-item">自第 3 波起 <strong>S1、D1-Pure、X1-Boost</strong> 加入</div>
+        </div>
+    </section>
+
+    <!-- ════ CTA 按鈕 ════ -->
+    <section class="cta-section" id="sx-cta">
+        <div class="cta-title">立即選購</div>
+        <button class="cta-arrow-btn" onclick="sxShowProducts()"></button>
+    </section>
+
+    <!-- 這裡將會動態插入產品清單內容 -->
+    <div id="product-list-container"></div>
+
+    <!-- ════ 頁尾 ════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                <div class="footer-copy">&copy; 2026 SpearX Inc.</div>
+                <a class="footer-link" href="https://www.spearx-inc.com/" target="_blank">前往 SpearX 官網 →</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
